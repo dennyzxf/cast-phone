@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quality_labels">
+        <item>流畅 · 省流量（约 2 Mbps）</item>
+        <item>均衡 · 推荐（约 4 Mbps）</item>
+        <item>高清 · 原分辨率（约 8 Mbps）</item>
+    </string-array>
+</resources>

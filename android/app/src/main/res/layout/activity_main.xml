@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="稳投屏"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1F2328" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="把手机画面投到同一 Wi-Fi 下的电脑"
+            android:textSize="13sp"
+            android:textColor="#57606A" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="12dp"
+            android:background="#F0F3F6"
+            android:text="尚未连接"
+            android:textSize="13sp"
+            android:textColor="#1F2328" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="连接地址"
+            android:textSize="13sp"
+            android:textColor="#57606A" />
+
+        <EditText
+            android:id="@+id/urlEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="ws://192.168.1.5:3000/ws?role=sender&amp;room=ABC123"
+            android:inputType="textUri"
+            android:maxLines="2"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/scanBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="扫码获取电脑地址" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="画质"
+            android:textSize="13sp"
+            android:textColor="#57606A" />
+
+        <Spinner
+            android:id="@+id/qualitySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:entries="@array/quality_labels" />
+
+        <Button
+            android:id="@+id/startBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="开始投屏" />
+
+        <Button
+            android:id="@+id/stopBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="停止投屏" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="使用步骤：电脑上运行接收端并显示二维码 → 手机扫码 → 点开始投屏 → 允许录屏授权。\n\n手机和电脑须在同一 Wi-Fi；首次使用需允许相机和通知权限。投屏过程中可以在通知栏看到连接状态。"
+            android:textSize="12sp"
+            android:lineSpacingExtra="3dp"
+            android:textColor="#57606A" />
+
+    </LinearLayout>
+</ScrollView>
