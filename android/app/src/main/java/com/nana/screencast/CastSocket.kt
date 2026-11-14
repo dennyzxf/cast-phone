@@ -6,7 +6,7 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
-import okio.ByteString
+import okio.Buffer
 import java.util.concurrent.TimeUnit
 
 class CastSocket(
@@ -56,7 +56,9 @@ class CastSocket(
 
     fun sendFrame(frame: ByteArray): Boolean {
         val socket = ws ?: return false
-        return socket.send(ByteString.of(frame, 0, frame.size))
+        // okio 3.x 把 ByteString.of(byte[], int, int) 标成了 ERROR 级废弃，
+        // 这里用未废弃的 Buffer 写入再读出 ByteString，行为等价。
+        return socket.send(Buffer().write(frame).readByteString())
     }
 
     fun close() {
