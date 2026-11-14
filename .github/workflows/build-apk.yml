@@ -20,18 +20,22 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: 准备 Android SDK
-        uses: android-actions/setup-android@v3
+      - name: 确认 Android SDK 并接受协议
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          SDKMGR="$(command -v sdkmanager || true)"
+          if [ -z "$SDKMGR" ]; then
+            SDKMGR="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)"
+          fi
+          echo "sdkmanager: $SDKMGR"
+          "$SDKMGR" --version
+          yes | "$SDKMGR" --licenses > /dev/null || true
+          "$SDKMGR" "platforms;android-35" "build-tools;35.0.0" "platform-tools" || echo "组件已预装，继续编译"
 
       - name: 安装 Gradle 8.9
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-
-      - name: 接受协议并安装 SDK 组件
-        run: |
-          yes | sdkmanager --licenses > /dev/null || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
 
       - name: 编译 Debug APK
         working-directory: android
